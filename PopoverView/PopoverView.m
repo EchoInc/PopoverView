@@ -19,6 +19,9 @@
 //padding within the box for the contentView
 #define kBoxPadding 10.f
 
+//padding for the title
+#define kTitlePadding 4.f
+
 //control point offset for rounding corners of the main popover box
 #define kCPOffset 1.8f
 
@@ -65,7 +68,7 @@
 // TITLE GRADIENT
 
 //bottom color white value in title gradient bg
-#define kGradientTitleBottomColor [UIColor colorWithWhite:0.93f alpha:kBoxAlpha]
+#define kGradientTitleBottomColor [UIColor colorWithWhite:0.85f alpha:kBoxAlpha]
 
 //top color white value in title gradient bg
 #define kGradientTitleTopColor [UIColor colorWithWhite:1.f alpha:kBoxAlpha]
@@ -74,7 +77,7 @@
 // FONTS
 
 //normal text font
-#define kTextFont [UIFont fontWithName:@"HelveticaNeue" size:20.f]
+#define kTextFont [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.f]
 
 //normal text color
 #define kTextColor [UIColor colorWithRed:0.329 green:0.341 blue:0.353 alpha:1]
@@ -83,7 +86,7 @@
 #define kTextAlignment UITextAlignmentCenter
 
 //title font
-#define kTitleFont [UIFont fontWithName:@"HelveticaNeue" size:22.f]
+#define kTitleFont [UIFont fontWithName:@"HelveticaNeue-Bold" size:22.f]
 
 //title text color
 #define kTitleColor [UIColor colorWithRed:0.329 green:0.341 blue:0.353 alpha:1]
@@ -315,9 +318,9 @@
     
     //Make sure that the title's label will have non-zero height.  If it has zero height, then we don't allocate any space
     //for it in the positioning of the views.
-    float titleHeightOffset = (titleSize.height > 0.f ? kBoxPadding : 0.f);
+    float titleHeightOffset = (titleSize.height > 0.f ? kTitlePadding : 0.f);
     
-    float totalHeight = titleSize.height + titleHeightOffset + kBoxPadding;
+    float totalHeight = titleSize.height + titleHeightOffset + kTitlePadding;
     float totalWidth = titleSize.width;
     
     int i = 0;
@@ -455,7 +458,7 @@
     float contentHeight = contentView.frame.size.height;
     float contentWidth = contentView.frame.size.width;
     
-    float padding = kBoxPadding;
+    float padding = (self.titleView ? kTitlePadding : kBoxPadding);
     
     float boxHeight = contentHeight + 2.f*padding;
     float boxWidth = contentWidth + 2.f*padding;
@@ -867,7 +870,7 @@
         //NSLog(@"titleView:%@", titleView);
         
         if(titleView != nil) {
-            titleBGHeight = kBoxPadding*2.f + titleView.frame.size.height;
+            titleBGHeight = kTitlePadding*2.f + titleView.frame.size.height;
         }
         
         
